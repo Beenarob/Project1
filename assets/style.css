@@ -1,0 +1,43 @@
+
+
+.search-bar {
+    
+    margin: 3%;
+    width: 20%
+}
+nav {
+    background-color: darkcyan;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+nav h1 {
+    font-weight: 700;
+    font-size: 300%;
+}
+.lists {
+   
+    margin-left: 3%;
+    font-size: 120%;
+    font-weight: 700;
+}
+
+.map {
+    height: 200px;
+
+    width: 200px;
+    margin: 0 auto;
+    overflow: auto;
+    
+}
+
+.map:hover {
+    
+    width: 570px;
+  height: 500px;
+    padding: 10px;
+    border-radius: 50px;
+    transition: all 1s;
+  }
