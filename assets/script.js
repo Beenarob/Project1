@@ -1,7 +1,6 @@
 var submitEl = document.querySelector(".button");
 
-var listsEl = document.querySelector(".lists");
-var mapEl = document.querySelector(".map");
+
 var test = document.querySelector("#test");
 
 var containerSearch = document.querySelector(".control");
@@ -27,9 +26,15 @@ containerSearch.append(searchBoxHTML);
 $(".tt-search-box-input").attr("id", "searchInput");
 
 submitEl.addEventListener("click", function () {
+
+  gettingLocation()
+  
+});
+
+function gettingLocation () {
   var labelText = $(".tt-searchbox-filter-label__text")[0].innerText;
-  console.log($(".tt-searchbox-filter-label__text"));
-  console.log(labelText);
+  // console.log($(".tt-searchbox-filter-label__text"));
+  // console.log(labelText);
   var inputVal = $("#searchInput").val();
   var nameVal = labelText;
 
@@ -40,62 +45,71 @@ submitEl.addEventListener("click", function () {
     realVal = inputVal;
   }
 
-  var ulEl = document.createElement("ul");
-  var listEl = document.createElement("li");
-
-  listEl.innerHTML = `<ul>
-        <li><a href="#">Address1</a></li>
-        <li><a href="#">Address2</a></li>
-        <li><a href="#">Address3</a></li>
-        <li><a href="#">Address4</a></li>
-    </ul>`;
-  ulEl.append(listEl);
-
-  listsEl.append(ulEl);
-
-  var valSplit = realVal.split(' ')
+  // realVal = 'san francisco CA'
   
-  var newVal;
-  for(var i = 0; i < valSplit.length; i++) {
-    if(valSplit[i].toLowerCase() === 'salon'|| valSplit[i].toLowerCase() === 'nail')
-    newVal = valSplit[i]
-  }
- 
-  category(newVal)
-  
-});
+
+  currentLocation(realVal)
+} 
+//
 
 
 
-function nearBy(lat,lon) {
-  fetch('https://api.tomtom.com/search/2/nearbySearch/.json?key=1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG&radius=100&lat='+lat+'&lon='+lon)
+function nearBy(lon,lat) {
+  fetch('https://api.tomtom.com/search/2/nearbySearch/.json?key=1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG&radius=10000&lat='+lat+'&lon='+lon+'&limit=10&categorySet=9361068')
   .then (function (response) {
     return response.json()
   })
   .then (function(data) {
     var dataResult = data.results
-    console.log(dataResult)
-    
+    // console.log(dataResult)
+    // console.log(dataResult[0].poi.categories)
+    // for(var i = 0; i < dataResult.length; i++) {
+    // console.log(dataResult[0].poi.categories[0])
+    // }
+    var salonName;
     for(var i = 0; i < dataResult.length; i++) {
-    console.log(dataResult[i].poi.name)
+      // console.log(dataResult[i].poi.categories)
+      console.log(dataResult[i].poi.name)
     }
+    // console.log(data.results)
+   
   })
 }
 // getLocation ()
 
-function category(salon) {
-  fetch('https://api.tomtom.com/search/2/categorySearch/'+salon+'.json?key=1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG&radius=100&lat=36.98844&lon=-121.97483')
+function currentLocation(location) {
+  fetch('https://api.tomtom.com/search/2/geocode/'+location+'.json?key=1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG&countryset=US')
   .then (function (response) {
     return response.json()
   })
   .then (function(data) {
-    
-    var catLat = data.summary.geoBias.lat
-    var catLon = data.summary.geoBias.lon
+    var results = data.results
+    // var location;
 
-    nearBy(catLat,catLon)
+ 
+    
+    var catLat = results[0].position.lat
+    var catLon = results[0].position.lon
+
+    // console.log(catLat)
+    // console.log(catLon)
+
+    nearBy(catLon,catLat)
   })
 
 }
 
-category()
+
+
+//API FOR CATEGORIES
+// fetch('https://api.tomtom.com/search/2/poiCategories.json?key=1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG')
+// .then(function(response) {
+//   return response.json()
+// })
+// .then(function(data) {
+//   console.log(data)
+// })
+// category()
+
+//new autocomplete
+
