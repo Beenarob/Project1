@@ -40,7 +40,7 @@ submitEl.addEventListener("click", function () {
 
 });
 
-
+var test = [-121.91595, 37.36729]
 //START FROM HERE
 function gettingLocation() {
   var labelText = $(".tt-searchbox-filter-label__text")[0].innerText;
@@ -60,23 +60,49 @@ function gettingLocation() {
 }
 
 //SHOWING ON THE MAP
-function showMap() {
-  tt.setProductInfo('test', '1');
-  tt.map({
-    key: '1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG',
-    container: 'map',
-     
-  });
+function showMap(locate) {
+  console.log(locate)
 
-  // var marker = new tt.Marker()
-  //       .setLngLat([37.3, -80.5])
-  //       .addTo(map);
+  for(var i = 0;i < locate.length; i+= 2) {
+   var long = locate[i]
+   var lat = locate[i + 1]
+    // var lon = '';
+    // var lat = '';
+   
+   
+    // else {
+    //   lat = locate[i]
+    // }
+    
   
-  // map.marker
+
+    var map = tt.map({
+      container: 'map',
+      key: '1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG',
+      center: [long, lat],
+      zoom: 10
+
+
+    });
+    var marker = new tt.Marker().setLngLat([long, lat]).addTo(map);
+    var popupOffsets = {
+      top: [0, 0],
+      bottom: [0, -70],
+      'bottom-right': [0, -70],
+      'bottom-left': [0, -70],
+      left: [25, -35],
+      right: [-25, -35]
+    }
+
+    var popup = new tt.Popup({ offset: popupOffsets }).setHTML("Company, Pinole");
+
+    marker.setPopup(popup).togglePopup();
+  }
+ 
+
 }
 
-var marker = new tt.Marker()
-console.log(marker)
+
 //WE NEED TO FIND THE PLACES NEARBY THE LAT AND LON THAT WE GOT FROM PREVIOUS STEP
 //WE CAN ALSO FILTER OUT WHICH PLACES WE WANT TO GET THE INFOS FROM, IN THIS CASE, ITS SALON
 //CHECK OUT THE LAST PARAMETER ON LINE 69 HOW I GOT THE CATEGORY
@@ -91,16 +117,23 @@ function nearBy(lon, lat) {
       var salonName;
       var salonLat;
       var salonLon;
+      var lonLat = []
       for (var i = 0; i < dataResult.length; i++) {
+
         salonName = dataResult[i].poi.name
         salonLat = dataResult[i].position.lat
         salonLon = dataResult[i].position.lon
         console.log(salonName) //CONSOLE LOGS THE PLACES
         console.log(salonLat)
         console.log(salonLon)
+        lonLat.push(salonLon, salonLat)
+
+
+
       }
 
-      console.log(dataResult[0].position.lat)
+      showMap(lonLat)
+
     })
 }
 
@@ -118,9 +151,9 @@ function currentLocation(location) {
 
 
       nearBy(catLon, catLat) //STEP3
-      showMap()
-      
-      
+
+
+
     })
 
 }
