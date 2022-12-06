@@ -4,7 +4,19 @@ var submitEl = document.querySelector(".button");
 var test = document.querySelector("#test");
 
 var containerSearch = document.querySelector(".control");
+var mapEl = document.querySelector('.map')
 
+//CURRENT LOCATION
+var catLat;
+var catLon;
+
+
+
+var salonName;
+var salonLat;
+var salonLon;
+var address; //FOR FUTURE USE
+var phone;
 //autoCOMPLETE
 
 var options = {
@@ -19,6 +31,18 @@ var options = {
     language: "en-US",
   },
 };
+
+
+//CLICKING THE SALON NAMES ON MAP
+mapEl.addEventListener('click', function(e) {
+
+  var element = e.target
+  if(element.classList.contains('mapboxgl-popup-content')) {
+    alert(element.innerText)
+  } 
+
+})
+
 
 //SEARCH BAR  - STARTS HERE
 var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
@@ -45,7 +69,7 @@ function gettingLocation() {
     realVal = inputVal;
   }
 
-  currentLocation(realVal); 
+  currentLocation(realVal);
 }
 
 //LASTLY SHOWING ON THE MAP
@@ -60,36 +84,22 @@ function showMap(locate, name) {
     var map = tt.map({
       container: "map",
       key: "1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG",
-      center: [lng, lat],
+      center: [catLon, catLat],
       zoom: 12,
-      // style: 'https://api.tomtom.com/style/1/style/20.4.5-*/?map=basic_night&poi=poi_main',
+      style:
+        "https://api.tomtom.com/style/1/style/20.4.5-*/?map=basic_night&poi=poi_main",
     });
     //AFTER ITERATION, PUSH THEM IN PAIRS
-    var marker = new tt.Marker().setLngLat([lng, lat]).addTo(map);
+    new tt.Marker().setLngLat([catLon, catLat]).addTo(map);
     allLocations.push({ lat, lng }); //
   }
   console.log(allLocations); // ALL THE LOCATIONS FOR MARKERS
 
-  allLocations.forEach(function (child) {
-    //SETTING UP THE MARKERS
-    //FOR CUSTOMIZATION
-    // var element = document.createElement("div");
-    // element.id = "marker";
-    // new tt.Marker({ element: element }).setLngLat(child).addTo(map);
-
-    // new tt.Marker({element: element}).setLngLat(speedyPizzaCoordinates).addTo(map);
-
-    new tt.Marker().setLngLat(child).addTo(map);
-  });
-
-  //NAMES NEED WORK
-  for (var i = 0; i < name.length; i++) {
-    console.log(name[i]);
-
-    var popup = new tt.Popup({ anchor: "top" }).setText(name[i]);
-    marker.setPopup(popup).togglePopup();
+  for (var i = 0; i < allLocations.length; i++) {
+    new tt.Popup().setLngLat(allLocations[i]).setText(name[i]).addTo(map);
   }
 }
+
 //STEP3
 //WE NEED TO FIND THE PLACES NEARBY THE LAT AND LON THAT WE GOT FROM PREVIOUS STEP
 //WE CAN ALSO FILTER OUT WHICH PLACES WE WANT TO GET THE INFOS FROM, IN THIS CASE, ITS SALON
@@ -108,26 +118,25 @@ function nearBy(lon, lat) {
     .then(function (data) {
       var dataResult = data.results;
 
-      var salonName;
-      var salonLat;
-      var salonLon;
-      var address;//FOR FUTURE USE
       var lonLat = [];
       var salonArray = [];
       for (var i = 0; i < dataResult.length; i++) {
-        address = dataResult[i].address.freeformAddress; 
+        console.log(dataResult[i].poi);
+        phone = dataResult[i].poi.phone;
+        address = dataResult[i].address.freeformAddress;
         salonName = dataResult[i].poi.name;
         salonLat = dataResult[i].position.lat;
         salonLon = dataResult[i].position.lon;
         console.log(address);
-        console.log(salonName); //CONSOLE LOGS THE PLACES
+        console.log(salonName);
         console.log(salonLat);
         console.log(salonLon);
         lonLat.push(salonLon, salonLat);
         salonArray.push(salonName);
       }
       console.log(salonName);
-      showMap(lonLat, salonArray); 
+
+      showMap(lonLat, salonArray);
     });
 }
 
@@ -143,10 +152,9 @@ function currentLocation(location) {
     })
     .then(function (data) {
       var results = data.results;
-      var catLat = results[0].position.lat; //longitude
-      var catLon = results[0].position.lon; //latitude
-
-      nearBy(catLon, catLat); 
+      catLat = results[0].position.lat; //longitude
+      catLon = results[0].position.lon; //latitude
+      nearBy(catLon, catLat);
     });
 }
 
