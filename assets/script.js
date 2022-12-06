@@ -18,6 +18,22 @@ var salonLon;
 var address; //FOR FUTURE USE
 var phone;
 //autoCOMPLETE
+var test = document.querySelector('.test')
+
+function createInfos(name,address,phone) {
+  
+  var salonCard = document.createElement('div')
+  salonCard.classList.add('salon-card')
+  var salonName = document.createElement('h1')
+  var salonAddress = document.createElement('h2')
+  var salonPhone = document.createElement('h2')
+  salonName.textContent = name
+  salonAddress.textContent = address
+  salonPhone.textContent = phone
+  salonCard.append(salonName,salonAddress,salonPhone)
+  test.append(salonCard)
+}
+
 
 var options = {
   searchOptions: {
@@ -110,7 +126,7 @@ function nearBy(lon, lat) {
       lat +
       "&lon=" +
       lon +
-      "&limit=10&categorySet=9361068"
+      "&limit=5&categorySet=9361068"
   )
     .then(function (response) {
       return response.json();
@@ -133,6 +149,7 @@ function nearBy(lon, lat) {
         console.log(salonLon);
         lonLat.push(salonLon, salonLat);
         salonArray.push(salonName);
+        createInfos(salonName,address,phone)
       }
       console.log(salonName);
 
