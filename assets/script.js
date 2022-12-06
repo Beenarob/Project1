@@ -5,7 +5,7 @@ var test = document.querySelector("#test");
 
 var containerSearch = document.querySelector(".control");
 
-//auto
+//autoCOMPLETE
 
 var options = {
   searchOptions: {
@@ -20,19 +20,19 @@ var options = {
   },
 };
 
+//SEARCH BAR  - STARTS HERE
 var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
 var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-
 containerSearch.append(searchBoxHTML);
 
+//ADDED ID INTO SEARCH BAR
 $(".tt-search-box-input").attr("id", "searchInput");
 
 submitEl.addEventListener("click", function () {
   gettingLocation();
 });
 
-var test = [-121.91595, 37.36729];
-//START FROM HERE
+//2ND
 function gettingLocation() {
   var labelText = $(".tt-searchbox-filter-label__text")[0].innerText;
   var nameVal = labelText; //input from Box
@@ -45,10 +45,10 @@ function gettingLocation() {
     realVal = inputVal;
   }
 
-  currentLocation(realVal); //STEP2
+  currentLocation(realVal); 
 }
 
-//SHOWING ON THE MAP
+//LASTLY SHOWING ON THE MAP
 function showMap(locate, name) {
   console.log(name);
   console.log(locate); //ALL THE LOCATIONS WE NEED
@@ -61,35 +61,36 @@ function showMap(locate, name) {
       container: "map",
       key: "1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG",
       center: [lng, lat],
-      zoom: 10,
+      zoom: 12,
       // style: 'https://api.tomtom.com/style/1/style/20.4.5-*/?map=basic_night&poi=poi_main',
     });
     //AFTER ITERATION, PUSH THEM IN PAIRS
     var marker = new tt.Marker().setLngLat([lng, lat]).addTo(map);
     allLocations.push({ lat, lng }); //
-    
-
   }
   console.log(allLocations); // ALL THE LOCATIONS FOR MARKERS
+
   allLocations.forEach(function (child) {
     //SETTING UP THE MARKERS
+    //FOR CUSTOMIZATION
+    // var element = document.createElement("div");
+    // element.id = "marker";
+    // new tt.Marker({ element: element }).setLngLat(child).addTo(map);
+
+    // new tt.Marker({element: element}).setLngLat(speedyPizzaCoordinates).addTo(map);
+
     new tt.Marker().setLngLat(child).addTo(map);
   });
-  
- 
-  for(var i = 0; i < name.length; i++) {
-    console.log(name[i])
-   
+
+  //NAMES NEED WORK
+  for (var i = 0; i < name.length; i++) {
+    console.log(name[i]);
+
     var popup = new tt.Popup({ anchor: "top" }).setText(name[i]);
     marker.setPopup(popup).togglePopup();
   }
-  }
- 
-
-
- 
- 
-
+}
+//STEP3
 //WE NEED TO FIND THE PLACES NEARBY THE LAT AND LON THAT WE GOT FROM PREVIOUS STEP
 //WE CAN ALSO FILTER OUT WHICH PLACES WE WANT TO GET THE INFOS FROM, IN THIS CASE, ITS SALON
 //CHECK OUT THE LAST PARAMETER ON LINE 69 HOW I GOT THE CATEGORY
@@ -110,11 +111,11 @@ function nearBy(lon, lat) {
       var salonName;
       var salonLat;
       var salonLon;
-      var address;
+      var address;//FOR FUTURE USE
       var lonLat = [];
       var salonArray = [];
       for (var i = 0; i < dataResult.length; i++) {
-        address = dataResult[i].address.freeformAddress; //FOR FUTURE
+        address = dataResult[i].address.freeformAddress; 
         salonName = dataResult[i].poi.name;
         salonLat = dataResult[i].position.lat;
         salonLon = dataResult[i].position.lon;
@@ -126,11 +127,11 @@ function nearBy(lon, lat) {
         salonArray.push(salonName);
       }
       console.log(salonName);
-      showMap(lonLat, salonArray);
+      showMap(lonLat, salonArray); 
     });
 }
 
-//GEOCODING THE LOCATION WE GOT FROM STEP1, WE NEED TO GET THE LATITUDE AND LONGITUDE
+//GEOCODING THE LOCATION WE GOT FROM STEP2, WE NEED TO GET THE LATITUDE AND LONGITUDE
 function currentLocation(location) {
   fetch(
     "https://api.tomtom.com/search/2/geocode/" +
@@ -145,7 +146,7 @@ function currentLocation(location) {
       var catLat = results[0].position.lat; //longitude
       var catLon = results[0].position.lon; //latitude
 
-      nearBy(catLon, catLat); //STEP3
+      nearBy(catLon, catLat); 
     });
 }
 
