@@ -53,3 +53,19 @@ nav h1 {
     font-weight: 700;
     font-size: 130%;
 }
+.test {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.salon-card {
+    margin: 1%;
+    padding: 2%;
+    text-align: center;
+    border: 3px solid black;
+
+    
+}
+.container {
+    display: flex;
+}
