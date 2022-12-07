@@ -1,24 +1,11 @@
-* {
-  font-family: sans-serif;
-}
-
 .search-bar {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: 3% auto;
+  margin: 3%;
+  width: 80%;
 }
-
 nav {
-<<<<<<< HEAD
-  background-color: #102847;
-  height: 200px;
-=======
   background-color: darkcyan;
   height: 400px;
->>>>>>> 6490e6847f6413bcfed1062f700f8e2fe2651d4b
   display: flex;
-  color: pink;
   justify-content: center;
   align-items: center;
 }
@@ -37,8 +24,8 @@ nav h1 {
 }
 
 #map {
-  width: 500px;
-  height: 500px;
+  width: 40vw;
+  height: 40vh;
   border-radius: 50px;
 }
 
@@ -53,47 +40,32 @@ nav h1 {
   flex-wrap: wrap;
 }
 .salon-card {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   margin: 1%;
   padding: 1%;
   text-align: center;
   border: 3px solid black;
   border-radius: 5px;
+
 }
 .salon-name {
-  font-weight: 700;
-
-  color: black;
+    font-weight: 700;
+   
+    color: black;
 }
 .salon-name:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 .container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .salon-address {
-  color: black;
-  font-size: 100%;
+
+    color: black;
 }
 .salon-address:hover {
-<<<<<<< HEAD
-  text-decoration: underline;
-}
-
-
-//MEDIA QUERY
-//MOBILE
-
-@media screen and (max-width:660px) {
-    nav {
-        background: black;
-    }
-
-
-=======
     text-decoration: underline;
 }
 
@@ -125,5 +97,4 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 color: white;
->>>>>>> 6490e6847f6413bcfed1062f700f8e2fe2651d4b
 }
