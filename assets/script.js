@@ -18,20 +18,26 @@ var salonLon;
 var address; //FOR FUTURE USE
 var phone;
 //autoCOMPLETE
-var test = document.querySelector('.test')
+var cardContainer = document.querySelector('.card-container')
 
 function createInfos(name,address,phone) {
-  
+ 
   var salonCard = document.createElement('div')
   salonCard.classList.add('salon-card')
-  var salonName = document.createElement('h1')
-  var salonAddress = document.createElement('h2')
-  var salonPhone = document.createElement('h2')
+  var salonName = document.createElement('a')
+  salonName.classList.add('salon-name')
+  salonName.href=`http://www.google.com/search?q=${name}`
+  salonName.target = '__blank'
+  var salonAddress = document.createElement('a')
+  salonAddress.classList.add('salon-address')
+  salonAddress.href=`https://www.google.com/maps/search/${address}/`
+  salonAddress.target='__blank'
+  var salonPhone = document.createElement('p')
   salonName.textContent = name
   salonAddress.textContent = address
   salonPhone.textContent = phone
   salonCard.append(salonName,salonAddress,salonPhone)
-  test.append(salonCard)
+  cardContainer.append(salonCard)
 }
 
 
@@ -50,14 +56,7 @@ var options = {
 
 
 //CLICKING THE SALON NAMES ON MAP
-mapEl.addEventListener('click', function(e) {
 
-  var element = e.target
-  if(element.classList.contains('mapboxgl-popup-content')) {
-    alert(element.innerText)
-  } 
-
-})
 
 
 //SEARCH BAR  - STARTS HERE
@@ -67,6 +66,7 @@ containerSearch.append(searchBoxHTML);
 
 //ADDED ID INTO SEARCH BAR
 $(".tt-search-box-input").attr("id", "searchInput");
+
 
 submitEl.addEventListener("click", function () {
   gettingLocation();
@@ -101,7 +101,7 @@ function showMap(locate, name) {
       container: "map",
       key: "1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG",
       center: [catLon, catLat],
-      zoom: 12,
+      zoom: 13,
       style:
         "https://api.tomtom.com/style/1/style/20.4.5-*/?map=basic_night&poi=poi_main",
     });
@@ -114,6 +114,7 @@ function showMap(locate, name) {
   for (var i = 0; i < allLocations.length; i++) {
     new tt.Popup().setLngLat(allLocations[i]).setText(name[i]).addTo(map);
   }
+ 
 }
 
 //STEP3
@@ -136,6 +137,7 @@ function nearBy(lon, lat) {
 
       var lonLat = [];
       var salonArray = [];
+      cardContainer.innerHTML = '';
       for (var i = 0; i < dataResult.length; i++) {
         console.log(dataResult[i].poi);
         phone = dataResult[i].poi.phone;

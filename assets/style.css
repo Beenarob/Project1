@@ -1,71 +1,67 @@
-
-
 .search-bar {
-    
-    margin: 3%;
-    width: 50%
+  margin: 3%;
+  width: 80%;
 }
 nav {
-    background-color: darkcyan;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 3px solid black;
+  background-color: darkcyan;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid black;
 }
 nav h1 {
-    font-weight: 700;
-    font-size: 300%;
+  font-weight: 700;
+  font-size: 300%;
 }
 .lists {
-   
-    margin-left: 3%;
-    font-size: 120%;
-    font-weight: 700;
+  margin-left: 3%;
+  font-size: 120%;
+  font-weight: 700;
 }
 
-.map {
-    height: 200px;
-
-    width: 200px;
-    margin: 0 auto;
-    overflow: auto;
-    
-}
-
-.map:hover {
-    
-    width: 570px;
-  height: 500px;
-    padding: 10px;
-    border-radius: 50px;
-    transition: all 1s;
-  }
-
-  #map {
-    width: 50vw;
-    height: 50vh;
-    border-radius: 50px;
+#map {
+  width: 40vw;
+  height: 40vh;
+  border-radius: 50px;
 }
 
 .mapboxgl-popup {
-    color: black;
-    font-weight: 700;
-    font-size: 130%;
+  color: black;
+  font-weight: 700;
+  font-size: 130%;
 }
 .test {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .salon-card {
-    margin: 1%;
-    padding: 2%;
-    text-align: center;
-    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+  margin: 1%;
+  padding: 1%;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 5px;
 
-    
+}
+.salon-name {
+    font-weight: 700;
+   
+    color: black;
+}
+.salon-name:hover {
+    text-decoration: underline;
 }
 .container {
-    display: flex;
+  display: flex;
+  justify-content: space-evenly;
+}
+.salon-address {
+
+    color: black;
+}
+.salon-address:hover {
+    text-decoration: underline;
 }
