@@ -66,6 +66,7 @@ containerSearch.append(searchBoxHTML);
 
 //ADDED ID INTO SEARCH BAR
 $(".tt-search-box-input").attr("id", "searchInput");
+$(".tt-search-box-input").attr("placeholder","Enter your current location..")
 
 
 submitEl.addEventListener("click", function () {
@@ -134,7 +135,8 @@ function nearBy(lon, lat) {
     })
     .then(function (data) {
       var dataResult = data.results;
-
+      
+     
       var lonLat = [];
       var salonArray = [];
       cardContainer.innerHTML = '';
