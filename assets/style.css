@@ -14,6 +14,13 @@ nav h1 {
   font-weight: 700;
   font-size: 300%;
 }
+
+h2 {
+  font-size: large;
+  font-weight: italic;
+
+}
+
 .lists {
   margin-left: 3%;
   font-size: 120%;
