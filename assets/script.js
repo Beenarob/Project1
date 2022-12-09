@@ -74,7 +74,10 @@ containerSearch.append(searchBoxHTML);
 
 //ADDED ID INTO SEARCH BAR
 $(".tt-search-box-input").attr("id", "searchInput");
+
 $(".tt-search-box-input").attr("autocomplete", "off");
+
+
 
 
 
@@ -144,8 +147,7 @@ function nearBy(lon, lat) {
     })
     .then(function (data) {
       var dataResult = data.results;
-      
-     
+
       var lonLat = [];
       var salonArray = [];
       cardContainer.innerHTML = '';
