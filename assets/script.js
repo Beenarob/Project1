@@ -1,7 +1,7 @@
 var apikeytomtom = "1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG";
 var submitEl = document.querySelector(".button");
 
-var test = document.querySelector("#test");
+
 
 var containerSearch = document.querySelector(".control");
 var mapEl = document.querySelector('.map')
