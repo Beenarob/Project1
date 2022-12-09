@@ -1,4 +1,7 @@
 
+* {
+  font-family: Comic Sans MS;
+}
 body {
   background-color: rgb(99 102 241);
 }
@@ -12,7 +15,9 @@ body {
   width: 30%;
   background-color: rgb(37 99 235);
   transition: all 0.2s;
-  color:  rgb(203 213 225);
+  color:  white;
+  
+  margin: 1%;
 }
 .search-bar button:hover {
   -webkit-transform: scale(1);
@@ -36,6 +41,7 @@ h2 {
 >>>>>>> 4ed9f62d3a3f3f31f860b7a089ca2ef4f42b47f3
   font-size: 120%;
   margin: 0 auto;
+  
 }
 .modal-body {
   background-color: rgb(99 102 241);
@@ -46,6 +52,7 @@ h2 {
   width: 40vw;
   height: 40vh;
   border-radius: 50px;
+  transition: all 0.2s;
 }
 #map:hover {
     -webkit-transform: scale(1.2);
@@ -78,7 +85,7 @@ h2 {
   flex-direction: column;
   padding: 1%;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   transition: all 0.2s;
 }
@@ -86,11 +93,16 @@ h2 {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-}
+  box-shadow: 0 25px 50px -12px  rgb(49 46 129);
 
-.salon-card a {
+}
+/* .hero-image:hover {
+  box-shadow: 0 25px 50px -12px yellow;
+
+} */
+.salon-card a, p{
   text-decoration: none;
-  color: #1D2226;
+  color: white;
 }
 .salon-card a:hover {
   color:  rgb(203 213 225);
@@ -117,15 +129,26 @@ h2 {
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
   background-color: rgb(37 99 235);
   color:  rgb(203 213 225);
+  
 }
-.header a {
-  color:  rgb(203 213 225);
+.header a{
+  background-color: rgb(37 99 235);
+  transition: all 0.2s;
+  color: white;
+}
+.header a:hover {
+  -webkit-transform: scale(1);
+  background-color: rgb(37 99 235);
+  -ms-transform: scale(1);
+  transform: scale(1.1);
+ 
 }
 .header-right {
   display: flex;
-  flex: 1 1 0;
   justify-content: space-between;
 }
 body,
@@ -134,9 +157,10 @@ html {
 }
 /* The hero image */
 .hero-image {
+  
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("SalonImage.webp");
+ 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('SalonImage.webp');
   /* Set a specific height */
   height: 50%;
   /* Position and center the image to scale nicely on all screens */
@@ -153,6 +177,13 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+}
+.logo img{
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+ 
+
 }
 
 /* MEDIA QUERY */
