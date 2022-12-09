@@ -9,31 +9,36 @@ body {
   text-align: center;
   margin:  auto;
   /* background-color: gray; */
-  background-color: rgb(99 102 241);
+  background-color: rgb(37 99 235);
 }
 .search-bar button {
-  width: 30%;
-  background-color: rgb(37 99 235);
+  width: 20%;
+  background-color: #0191E6;
   transition: all 0.2s;
   color:  white;
   
   margin: 1%;
 }
 .search-bar button:hover {
-  -webkit-transform: scale(1);
-  background-color: rgb(37 99 235);
-  -ms-transform: scale(1);
+  color: black;
+  background-color: #0191E6;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 
+.modal-header {
+  background-color: rgb(37 99 235);
+}
 .modal-header h1 {
+  color: white;
   font-weight: 900;
   font-size: 120%;
   margin: 0 auto;
   
 }
 .modal-body {
-  background-color: rgb(99 102 241);
+  background-color: rgb(37 99 235);
 }
 
 #map {
@@ -75,6 +80,7 @@ body {
   padding: 1%;
   text-align: center;
   border-radius: 15px;
+  background-color: #0191E6;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   transition: all 0.2s;
 }
@@ -112,7 +118,7 @@ body {
   margin: auto;
   padding: 3%;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  background-color: rgb(99 102 241);
+  background-color: rgb(37 99 235);
 
  
 }
@@ -177,6 +183,26 @@ html {
 
 /* MEDIA QUERY */
 @media screen and (max-width: 660px) {
+  .main-container {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #map {
+    width: 80vw;
+    margin: 5% auto;
+  }
+  .card-container {
+    flex-direction: column;
+  }
+  .salon-card {
+    margin: 3%;
+  }
+  .search-bar button {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 900px) {
   .main-container {
     flex-direction: column;
     justify-content: space-between;
