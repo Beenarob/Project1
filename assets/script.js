@@ -5,13 +5,13 @@ var test = document.querySelector("#test");
 
 var containerSearch = document.querySelector(".control");
 var mapEl = document.querySelector('.map')
+var mainContainer = document.querySelector('.main-container')
 
 //CURRENT LOCATION
 var catLat;
 var catLon;
 
-
-
+//SALON INFOS
 var salonName;
 var salonLat;
 var salonLon;
@@ -21,8 +21,11 @@ var phone;
 var cardContainer = document.querySelector('.card-container')
 
 function createInfos(name,address,phone) {
+  // mainContainer.setAttribute('style','background:red;')
  
+  console.log(address)
   var salonCard = document.createElement('div')
+  
   salonCard.classList.add('salon-card')
   var salonName = document.createElement('a')
   salonName.classList.add('salon-name')
@@ -35,7 +38,11 @@ function createInfos(name,address,phone) {
   var salonPhone = document.createElement('p')
   salonName.textContent = name
   salonAddress.textContent = address
+  if(phone === undefined) {
+    salonPhone.textContent = 'N/A'
+  } else {
   salonPhone.textContent = phone
+  }
   salonCard.append(salonName,salonAddress,salonPhone)
   cardContainer.append(salonCard)
 }
@@ -47,6 +54,7 @@ var options = {
     language: "en-US",
     countrySet: "US",
     limit: 5,
+   
   },
   autocompleteOptions: {
     key: "1BbnSjqoZvKrjDwXwmAFFUzKxYScA9hG",
@@ -66,6 +74,11 @@ containerSearch.append(searchBoxHTML);
 
 //ADDED ID INTO SEARCH BAR
 $(".tt-search-box-input").attr("id", "searchInput");
+
+$(".tt-search-box-input").attr("autocomplete", "off");
+
+
+
 
 
 submitEl.addEventListener("click", function () {
