@@ -1,6 +1,6 @@
 
 * {
-  font-family: Comic Sans MS;
+  font-family: Comic Sans MS, sans-serif;
 }
 body {
   background-color: rgb(99 102 241);
@@ -20,7 +20,7 @@ body {
   margin: 1%;
 }
 .search-bar button:hover {
-  color: black;
+  color:  rgb(203 213 225);
   background-color: #0191E6;
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.1);
@@ -60,11 +60,7 @@ body {
   font-weight: 700;
   font-size: 130%;
 }
-.test {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
+
 .card-container {
   display: flex;
   flex-direction: row;
@@ -157,11 +153,11 @@ html {
  
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('SalonImage.webp');
   /* Set a specific height */
-  height: 50%;
+  height: 60%;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   position: relative;
 }
 /* Place text in the middle of the image */
