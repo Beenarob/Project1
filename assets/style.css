@@ -26,19 +26,8 @@ body {
   transform: scale(1.1);
 }
 
-<<<<<<< HEAD
-h2 {
-  font-size: large;
-  font-weight: italic;
-
-}
-
-.lists {
-  margin-left: 3%;
-=======
 .modal-header h1 {
   font-weight: 900;
->>>>>>> 4ed9f62d3a3f3f31f860b7a089ca2ef4f42b47f3
   font-size: 120%;
   margin: 0 auto;
   
