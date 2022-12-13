@@ -1,8 +1,26 @@
 
+
+
+
+/* .header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+} */
+
+/* .header a:active {
+  background-color: dodgerblue;
+  color: white;
+} */
+
+
+/* these above are added */
 * {
+  box-sizing: border-box;
   font-family: Comic Sans MS, sans-serif;
 }
 body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(99 102 241);
 }
 .search-bar {
@@ -118,40 +136,54 @@ body {
 
  
 }
-
 .header {
+  overflow: hidden;
+  /* background-color: #F1F1F1; */
+  padding: 20px 10px;
   display: flex;
   justify-content: space-between;
   background-color: rgb(37 99 235);
   color:  rgb(203 213 225);
   
 }
-.header a{
+.header a {
+  float: left;
+  /* color: black; */
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
   background-color: rgb(37 99 235);
   transition: all 0.2s;
   color: white;
 }
+
 .header a:hover {
   -webkit-transform: scale(1);
   background-color: rgb(37 99 235);
+  /* background-color: #ddd; */
   -ms-transform: scale(1);
   transform: scale(1.1);
- 
+  color: black;
 }
 .header-right {
+  float: right;
   display: flex;
   justify-content: space-between;
 }
 body,
 html {
   height: 100%;
+  margin: 0;
 }
 /* The hero image */
 .hero-image {
   
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
  
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('SalonImage.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/SalonImage.webp');
   /* Set a specific height */
   height: 60%;
   /* Position and center the image to scale nicely on all screens */
@@ -178,25 +210,6 @@ html {
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 660px) {
-  .main-container {
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  #map {
-    width: 80vw;
-    margin: 5% auto;
-  }
-  .card-container {
-    flex-direction: column;
-  }
-  .salon-card {
-    margin: 3%;
-  }
-  .search-bar button {
-    width: 60%;
-  }
-}
 
 @media screen and (max-width: 900px) {
   .main-container {
@@ -217,3 +230,14 @@ html {
     width: 60%;
   }
 }
+
+/* @media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+} */
