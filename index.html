@@ -78,6 +78,18 @@
       <div class="logo">
         <img src="./assets/logo.jpg" alt="Company Logo">
       </div>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+    
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
       <div class="header-right">
         
         <a href="#aboutus">About Us</a>
@@ -131,11 +143,53 @@
       </head>
       <body>
   <body>
+    <nav class="nav">
+      <h1>NEARBY SALONS</h1>
+    </nav>
     <div class="search-bar">
+
       
       <div class="field">
         <p class="control">
           
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Click here to find nearby Salons!
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Enter location</h1>
+
+            </div>
+            <div class="modal-body">
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <!-- <input type="text" class="test"> -->
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button is-success" data-bs-dismiss="modal" >Submit</button>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <!-- <input type="text" class="test"> -->
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control">
+          <button class="button is-success">Submit</button>
+
         </p>
       </div>
       
@@ -161,4 +215,31 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script> -->
     <script src="./assets/script.js"></script>
   </body>
+
+  <footer>
+
+
+    <div id="Contact Me">
+      <h3>
+        For More information...
+      </h3>
+      <div class="AboutOurCompany">
+        <a href="aboutourcompany.html">About Our Company</a> 
+        <a href="signup.html">Sign up here!!</a>
+        
+
+      </div>
+      
+      <pre class="ContactInformation">
+        Contact Information
+          -Office-
+          Address: Sunnyside Hill Steet Danny Corner 97B Ceiling.
+          Email Address: jnitta@ucsb.edu
+          Phone Number: (408)376-xxxx
+      </pre>
+
+  </div>
+
+  </footer>
+
 </html>
