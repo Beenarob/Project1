@@ -6,6 +6,7 @@ body {
   background-color: rgb(99 102 241);
 }
 .search-bar {
+ 
   text-align: center;
   margin:  auto;
   /* background-color: gray; */
@@ -35,8 +36,15 @@ body {
 }
 .field {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   
+}
+.control {
+  display: flex;
+  flex-direction: column;
+  margin: 1% auto;
+  width: 50%;
 }
 
 /* .modal-header {
