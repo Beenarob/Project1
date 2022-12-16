@@ -47,6 +47,7 @@ function createInfos(name,address,phone) {
   cardContainer.append(salonCard)
 }
 
+//SEARCH BAR  - STARTS HERE
 
 var options = {
   searchOptions: {
@@ -61,16 +62,15 @@ var options = {
     language: "en-US",
   },
 };
+var submitBtn = document.createElement('button');
+submitBtn.classList.add('button','is-success')
+submitBtn.setAttribute('data-bs-dismiss','modal');
+submitBtn.textContent = 'Submit'
 
-
-//CLICKING THE SALON NAMES ON MAP
-
-
-
-//SEARCH BAR  - STARTS HERE
 var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
 var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-containerSearch.append(searchBoxHTML);
+containerSearch.append(searchBoxHTML,submitBtn);
+
 
 //ADDED ID INTO SEARCH BAR
 $(".tt-search-box-input").attr("id", "searchInput");
@@ -81,8 +81,9 @@ $(".tt-search-box-input").attr("autocomplete", "off");
 
 
 
-submitEl.addEventListener("click", function () {
+submitBtn.addEventListener("click", function () {
   gettingLocation();
+  
 });
 
 //2ND
@@ -97,9 +98,10 @@ function gettingLocation() {
   } else {
     realVal = inputVal;
   }
-
+  console.log(realVal)
   currentLocation(realVal);
 }
+
 
 //LASTLY SHOWING ON THE MAP
 function showMap(locate, name) {
@@ -187,6 +189,7 @@ function currentLocation(location) {
       catLat = results[0].position.lat; //longitude
       catLon = results[0].position.lon; //latitude
       nearBy(catLon, catLat);
+      
     });
 }
 
